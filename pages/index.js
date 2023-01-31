@@ -47,7 +47,7 @@ export default function Home() {
         <img src="/hybrid.png" className={styles.icon} />
         <h3>Make your own super hybrid</h3>
       </div>
-      <div className={styles.scrollableContainer} style={{ height: "80%" }} ref={scrollableContainerRef}>
+      <div className={styles.scrollableContainer} style={{ height: "80vh" }} ref={scrollableContainerRef}>
         {hybrids.map((hybrid, index) => (
           <div key={index} className={styles.hybridContainer} style={{ display: "flex", justifyContent: "space-between" }}>
             <div className={styles.animal} style={{ textAlign: "left" }}>{hybrid.animal}</div>
@@ -56,7 +56,7 @@ export default function Home() {
         ))}
       </div>
       
-      <div className={styles.inputContainer} style={{ height: "20%" }}>
+      <div className={styles.inputContainer} style={{ height: "20vh" }}>
         <form onSubmit={onSubmit}>
           <input
             type="text"
