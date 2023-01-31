@@ -1,13 +1,20 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
+  const scrollableContainerRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    scrollableContainerRef.current.scrollTop = scrollPosition;
+  }, [scrollPosition]);
 
   async function onSubmit(event) {
     event.preventDefault();
+    setScrollPosition(scrollableContainerRef.current.scrollTop);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -40,7 +47,7 @@ export default function Home() {
         <img src="/hybrid.png" className={styles.icon} />
         <h3>Make your own super hybrid</h3>
       </div>
-      <div className={styles.scrollableContainer} style={{ height: "80%" }}>
+      <div className={styles.scrollableContainer} style={{ height: "80%" }} ref={scrollableContainerRef}>
         {hybrids.map((hybrid, index) => (
           <div key={index} className={styles.hybridContainer} style={{ display: "flex", justifyContent: "space-between" }}>
             <div className={styles.animal} style={{ textAlign: "left" }}>{hybrid.animal}</div>
