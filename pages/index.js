@@ -38,7 +38,7 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container} style={{ height: "100vh" }}>
+    <div className={styles.container} style={{ height: "100vh", maxHeight: "100vh" }}>
       <Head>
         <title>Hybrid Superhero Maker</title>
         <link rel="icon" href="/hybrid.png" />
@@ -47,11 +47,11 @@ export default function Home() {
         <img src="/hybrid.png" className={styles.icon} />
         <h3>Make your own super hybrid</h3>
       </div>
-      <div className={styles.scrollableContainer} style={{ height: "80vh" }} ref={scrollableContainerRef}>
+      <div className={styles.scrollableContainer} style={{ height: "60vh", width: "100vh", maxHeight: "70vh" }} ref={scrollableContainerRef}>
         {hybrids.map((hybrid, index) => (
-          <div key={index} className={styles.hybridContainer} style={{ display: "flex", justifyContent: "space-between" }}>
-            <div className={styles.animal} style={{ textAlign: "left" }}>{hybrid.animal}</div>
-            <div className={styles.hybrid} style={{ textAlign: "right" }}>{hybrid.hybrid}</div>
+          <div key={index}>
+            <div className={styles.animal} style={{padding: "10px", float: "left" }}>{hybrid.animal}</div>
+            <div className={styles.hybrid} style={{padding: "10px", float: "right" }}>{hybrid.hybrid}</div>
           </div>
         ))}
       </div>
@@ -64,6 +64,8 @@ export default function Home() {
             placeholder="Enter an animal"
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
+
             className={styles.input}
           />
           <input type="submit" value="Submit" className={styles.submit} />
