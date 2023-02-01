@@ -72,7 +72,7 @@
 }
 
 .input {
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid gray;
 }
@@ -82,5 +82,5 @@
   background-color: lightblue;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 20px;
 }

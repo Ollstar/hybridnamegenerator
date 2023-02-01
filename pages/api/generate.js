@@ -5,7 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-let animalList = [];
+let conversationList = [];
 
 export default async function (req, res) {
   if (!configuration.apiKey) {
@@ -26,15 +26,17 @@ export default async function (req, res) {
     });
     return;
   }
-
-  animalList.push(animal);
-
+  //push animal with User: in front of it
+  conversationList.push(`User: ${animal}`);
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animalList),
+      prompt: generatePrompt(conversationList),
       temperature: 0.7,
+      max_tokens: 2000,
     });
+    //push the response from OpenAI with RivalAI: in front of it
+    conversationList.push(`RivalAI: ${completion.data.choices[0].text}`);
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
@@ -52,14 +54,17 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animalList) {
-  const animalHybrid = animalList.join("-");
-  return `Suggest three super hero pet names for a hybrid animal created from the following animals: ${animalList}. If the animal list is just 1 animal, then the name should be for that animal.
+function generatePrompt(conversationList) {
+  // Create a string with all the conversation history joined by newlines
+  const conversation = conversationList.join('\n');
+  return `Keep a conversation going with a user who experienced a product or event. Make sure to ask open ended questions that drive engagement. Try to get marketing data and Voice of Customer data to use for to make that product or event better in the future.
 
-  Animal: Cat
-  Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-  Animal: Cat-Dog
-  Names: Ruffclaw Elite, Kittycanine Defender, Barkmeow Justice
-  Animal: ${animalHybrid}
-  Names: `;
+  User: Hello, the tickets to the game were great! I will answer a survey for you.
+  RivalAI: Great! Did you happen to get snacks at the arena?
+  User: Yes.
+  RivalAI: What did you eat?
+  User: I had a hot dog.
+  RivalAI: I'll ask about your food later. Did you have a good time at the game? What score out of 10 would you give it?
+  ${conversation}
+  RivalAI: `;
 }
