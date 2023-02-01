@@ -67,7 +67,7 @@ export default function Home() {
             onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
 
             className={styles.input}
-          />
+            />
           <input type="submit" value="Submit" className={styles.submit} />
         </form>
       </div>
