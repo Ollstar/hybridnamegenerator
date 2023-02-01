@@ -79,8 +79,10 @@
 
 .submit {
   border-radius: 10px;
-  background-color: lightblue;
-  color: white;
+  background-color: white;
+  color: black;
   border: none;
   padding: 10px;
+  border: 1px solid gray;
+
 }
