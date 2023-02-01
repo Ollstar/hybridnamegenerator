@@ -1,14 +1,16 @@
 import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
+import AnimalButton from "/components/AnimalButton.js";
+
+const ANIMALS = ["Lion", "Tiger", "Bear", "Wolf", "Gorilla", "Raccoon", "Octopus", "Hippopotamus", "Kangaroo", "Squirrel"];
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
   const scrollableContainerRef = useRef(null);
 
-
-  async function onSubmit(event) {
+  async function onSubmit(event, animal = animalInput) {
     event.preventDefault();
     try {
       const response = await fetch("/api/generate", {
@@ -16,21 +18,27 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ animal }),
       });
-
+  
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
-      setHybrids([...hybrids, { animal: animalInput, hybrid: data.result }]);
+  
+      setHybrids([...hybrids, { animal, hybrid: data.result }]);
       setAnimalInput("");
     } catch(error) {
       console.error(error);
       alert(error.message);
     }
   }
+  
+
+  const onClickAnimalButton = async (animal) => {
+    setAnimalInput(animal);
+  };
+  
 
   return (
     <div className={styles.container} style={{ height: "100vh"}}>
@@ -41,9 +49,9 @@ export default function Home() {
       </Head>
       <div className={styles.header}>
         <img src="/hybrid.png" className={styles.icon} />
-        <h3>Make your own super hybrid</h3>
+        <h3>SuperHybridHeroGPT</h3>
       </div>
-      <div className={styles.scrollableContainer} style={{width: "100%",height: "100%"}} ref={scrollableContainerRef}>
+      <div className={styles.scrollableContainer} style={{width: "100%",height: "80vh"}} ref={scrollableContainerRef}>
         {hybrids.map((hybrid, index) => (
           <div key={index}>
             <div className={styles.animal} style={{padding: "10px", float: "left" }}>{hybrid.animal}</div>
@@ -51,7 +59,13 @@ export default function Home() {
           </div>
         ))}
       </div>
-      
+
+      <div className={styles.buttonContainer}>
+        {ANIMALS.map((animal, index) => (
+          <AnimalButton key={index} animal={animal} onClick={(e) => onClickAnimalButton(e)} />
+        ))}
+      </div>
+
       <div className={styles.inputContainer} style={{ height: "20vh" }}>
         <form onSubmit={onSubmit}>
           <input
