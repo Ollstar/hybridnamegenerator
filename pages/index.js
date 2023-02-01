@@ -6,15 +6,10 @@ export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
   const scrollableContainerRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    scrollableContainerRef.current.scrollTop = scrollPosition;
-  }, [scrollPosition]);
 
   async function onSubmit(event) {
     event.preventDefault();
-    setScrollPosition(scrollableContainerRef.current.scrollTop);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -38,16 +33,17 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container} style={{ height: "100vh", maxHeight: "100vh" }}>
+    <div className={styles.container} style={{ height: "100vh"}}>
       <Head>
         <title>Hybrid Superhero Maker</title>
         <link rel="icon" href="/hybrid.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
       <div className={styles.header}>
         <img src="/hybrid.png" className={styles.icon} />
         <h3>Make your own super hybrid</h3>
       </div>
-      <div className={styles.scrollableContainer} style={{ height: "60vh", width: "100vh", maxHeight: "70vh" }} ref={scrollableContainerRef}>
+      <div className={styles.scrollableContainer} style={{width: "100%",height: "100%"}} ref={scrollableContainerRef}>
         {hybrids.map((hybrid, index) => (
           <div key={index}>
             <div className={styles.animal} style={{padding: "10px", float: "left" }}>{hybrid.animal}</div>
