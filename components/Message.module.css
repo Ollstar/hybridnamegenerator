@@ -1,0 +1,18 @@
+.animalLeft {
+    text-align: left;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    float: left;
+    width: 60%;
+  }
+  
+  .animalRight {
+    text-align: right;
+    background-color: lightgreen;
+    border-radius: 10px;
+    padding: 10px;
+    float: right;
+    width: 60%;
+  }
+  

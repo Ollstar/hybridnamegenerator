@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 
+
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
@@ -10,6 +11,10 @@ export default function Home() {
 
   async function onSubmit(event, animal = animalInput) {
     event.preventDefault();
+
+    let currentTimestamp = new Date().toLocaleString();
+    setHybrids([...hybrids, { text: animal, author: "User", timestamp: currentTimestamp }]);
+
     try {
       setIsLoading(true);
       const response = await fetch("/api/generate", {
@@ -24,8 +29,9 @@ export default function Home() {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
+      let currentTimestamp2 = new Date().toLocaleString();
 
-      setHybrids([...hybrids, { animal, hybrid: data.result }]);
+      setHybrids([...hybrids, { text: animal, author: "User", timestamp: currentTimestamp }, { text: data.result, author: "RivalAI", timestamp: currentTimestamp2 }]);
       setAnimalInput("");
       setIsLoading(false);
     } catch (error) {
@@ -33,6 +39,7 @@ export default function Home() {
       alert(error.message);
     }
   }
+
 
 
   return (
@@ -47,25 +54,32 @@ export default function Home() {
         <h3>RivalAI</h3>
       </div>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
-        
+
         {hybrids.map((hybrid, index) => (
-          <div key={index}>
-            <div className={styles.animal} style={{ padding: "10px", float: "left" }}>{hybrid.animal}</div>
-            <div className={styles.hybrid} style={{ padding: "10px", float: "right" }}>{hybrid.hybrid}</div>
-            <div style={{ clear: "both" }}></div>
+          <div key={index} className={styles.messageContainer}>
+            <div >
+              <div className={hybrid.author === "User" ? styles.animalLeft : styles.animalRight}>
+                {hybrid.text}
+                <div className={styles.subtext}>
+                {hybrid.timestamp} - {hybrid.author}
+              </div>
+              </div>
+
+            </div>
           </div>
         ))}
+
         <div style={{ clear: "both" }}></div>
       </div>
       <form className={styles.form} onSubmit={onSubmit}>
-        <input type="text" 
-        className={styles.input} 
-        placeholder="Enter input message" 
-        value={animalInput} 
-        onChange={e => setAnimalInput(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
+        <input type="text"
+          className={styles.input}
+          placeholder="Enter input message"
+          value={animalInput}
+          onChange={e => setAnimalInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
         />
-        <button  type="submit" className={styles.submit} disabled={isLoading}>
+        <button type="submit" className={styles.submit} disabled={isLoading}>
           {isLoading ? "Generating..." : "Generate"}
         </button>
 
