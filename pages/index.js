@@ -9,6 +9,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollableContainerRef = useRef(null);
 
+  useEffect(() => {
+    scrollableContainerRef.current.scrollTop = scrollableContainerRef.current.scrollHeight;
+  }, [hybrids]);
+
   async function onSubmit(event, animal = animalInput) {
     event.preventDefault();
 
@@ -60,32 +64,32 @@ export default function Home() {
               <div className={hybrid.author === "User" ? styles.animalLeft : styles.animalRight}>
                 {hybrid.text}
                 <div className={styles.subtext}>
-                {hybrid.timestamp} - {hybrid.author}
-              </div>
-              </div>
+{hybrid.timestamp} - {hybrid.author}
+</div>
+</div>
 
-            </div>
-          </div>
-        ))}
+</div>
+</div>
+))}
 
-        <div style={{ clear: "both" }}></div>
-      </div>
-      <form className={styles.form} onSubmit={onSubmit}>
-        <input type="text"
-          className={styles.input}
-          placeholder="Enter input message"
-          value={animalInput}
-          onChange={e => setAnimalInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
-        />
-        <button type="submit" className={styles.submit} disabled={isLoading}>
-          {isLoading ? "Generating..." : "Generate"}
-        </button>
+<div style={{ clear: "both" }}></div>
+</div>
+<form className={styles.form} onSubmit={onSubmit}>
+<input type="text"
+className={styles.input}
+placeholder="Enter input message"
+value={animalInput}
+onChange={e => setAnimalInput(e.target.value)}
+onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
+/>
+<button type="submit" className={styles.submit} disabled={isLoading}>
+{isLoading ? "Generating..." : "Generate"}
+</button>
 
-      </form>
-      <div className={styles.footer}> 
-        <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
-    </div>
-    </div>
-  );
+</form>
+<div className={styles.footer}> 
+<p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
+</div>
+</div>
+);
 }
