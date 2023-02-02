@@ -72,6 +72,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "lato", sans-serif;
+
 }
 
 .input {
@@ -80,6 +82,8 @@
   padding: 15px;
   border-radius: 10px;
   border: 1px solid gray;
+  font-family: "lato", sans-serif;
+
 }
 
 .submit {
@@ -88,26 +92,32 @@
   color: white;
   border: none;
   padding: 15px;
+  font-family: "lato", sans-serif;
+
 }
 
 .animalLeft {
-  text-align: right;
-  background-color: rgb(117, 108, 108);
-  border-radius: 10px;
-  padding: 10px;
-  float: right;
-  width: 60%;
-  color: white;
-}
-
-.animalRight {
   text-align: left;
-  background-color: rgb(221,90,56);
+  background-color: rgb(117, 108, 108);
   border-radius: 10px;
   padding: 10px;
   float: left;
   width: 60%;
   color: white;
+  font-family: "lato", sans-serif;
+
+}
+
+.animalRight {
+  text-align: right;
+  background-color: rgb(221,90,56);
+  border-radius: 10px;
+  padding: 10px;
+  float: right;
+  width: 60%;
+  color: white;
+  font-family: "lato", sans-serif;
+
 }
 
 .textContainer {
@@ -120,4 +130,6 @@
   font-size: 8px;
   padding: 5px;
   color: white;
+  font-family: "lato", sans-serif;
+
 }

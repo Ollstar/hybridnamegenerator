@@ -51,11 +51,11 @@ export default function Home() {
     <div className={styles.container} style={{ height: "100vh" }}>
       <Head>
         <title>Speak to Rival and leave Reviews</title>
-        <link rel="icon" href="/Rivallogo.png" />
+        <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
       <div className={styles.header}>
-        <img src="/Rivallogo.png" className={styles.icon} />
+        <img src="/Rival_logo_2x.png" className={styles.icon} />
       </div>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
         <div className={styles.messageContainer}>
