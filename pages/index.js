@@ -82,23 +82,24 @@ export default function Home() {
 
         <div style={{ clear: "both" }}></div>
       </div>
+      <div className={styles.inputContainer}>
+        <form className={styles.form} onSubmit={onSubmit}>
+          <input type="text"
+            className={styles.input}
+            placeholder="Enter input message"
+            value={animalInput}
+            onChange={e => setAnimalInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
+          />
+          <button type="submit" className={styles.submit} disabled={isLoading}>
+            {isLoading ? "Generating..." : "Generate"}
+          </button>
 
-      <form className={styles.form} onSubmit={onSubmit}>
-        <input type="text"
-          className={styles.input}
-          placeholder="Enter input message"
-          value={animalInput}
-          onChange={e => setAnimalInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
-        />
-        <button type="submit" className={styles.submit} disabled={isLoading}>
-          {isLoading ? "Generating..." : "Generate"}
-        </button>
-
-      </form>
+        </form>
+      </div>
       <div className={styles.footer}>
         <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
       </div>
-    </div>
+    </div >
   );
 }
