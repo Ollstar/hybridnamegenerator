@@ -24,8 +24,6 @@
 
 
 .icon {
-  height: 100px;
-  width: 100px;
   margin-right: 10px;
 }
 
@@ -58,20 +56,24 @@
 }
 
 .input {
-  width: 50%;
+  float: left;
   margin-top: 10px;
   margin-left: 10px;
   padding: 15px;
   border-radius: 10px;
   border: 1px solid gray;
   font-family: "lato", sans-serif;
+  width: 50%;
 
 
 }
 
 .submit {
+  float: right;
+  width: 20%;
   margin-top: 10px;
   margin-left: 10px;
+  margin: 10px;
   border-radius: 10px;
   background-color: rgb(221,90,56);
   color: white;
@@ -82,11 +84,11 @@
 }
 
 .animalLeft {
-  text-align: left;
+  text-align: right;
   background-color: rgb(117, 108, 108);
   border-radius: 10px;
   padding: 10px;
-  float: left;
+  float: right;
   width: 60%;
   color: white;
   font-family: "lato", sans-serif;
@@ -94,11 +96,11 @@
 }
 
 .animalRight {
-  text-align: right;
+  text-align: left;
   background-color: rgb(221,90,56);
   border-radius: 10px;
   padding: 10px;
-  float: right;
+  float: left;
   width: 60%;
   color: white;
   font-family: "lato", sans-serif;
