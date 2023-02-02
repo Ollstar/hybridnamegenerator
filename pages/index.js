@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <div className={styles.container} style={{ height: "100vh" }}>
       <Head>
-        <title>Hybrid Superhero Maker</title>
+        <title>Speak to Rival and leave Reviews</title>
         <link rel="icon" href="/Rivallogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
