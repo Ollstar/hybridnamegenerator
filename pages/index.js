@@ -79,7 +79,13 @@ export default function Home() {
             </Toolbar>
           </AppBar>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
-
+      <div className={styles.messageContainer}>
+    <Message
+        author="RivalAI"
+        text="Hey... 👋"
+        timestamp={timestamp}>
+      </Message>
+    </div>
     <div className={styles.messageContainer}>
       <Message
         author="RivalAI"
@@ -87,6 +93,7 @@ export default function Home() {
         timestamp={timestamp}>
       </Message>
     </div>
+
 
         {hybrids.map((hybrid, index) => (
           <div key={index} className={styles.messageContainer}>
