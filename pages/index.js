@@ -15,7 +15,8 @@ import {
   ListItemText,
   Typography,
   Link,
-  Container
+  Container,
+  rgbToHex
 } from "@mui/material";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
@@ -71,9 +72,9 @@ export default function Home() {
         <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "rgb(240,240,240)" }}>
             <Toolbar>
-              <img src="/Rival_logo_2x.png" style={{ height: '50px' }} />
+              <img src="/Rival_logo_2x.png" style={{ height: '50px', margin: "5px"}} />
             </Toolbar>
           </AppBar>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
