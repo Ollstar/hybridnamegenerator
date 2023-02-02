@@ -117,6 +117,7 @@
 }
 
 .subtext {
-  font-size: 12px;
+  font-size: 8px;
+  padding: 5px;
   color: white;
 }
