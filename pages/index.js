@@ -73,7 +73,7 @@ export default function Home() {
         <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
-      <AppBar position="sticky" elevation={0} style={{ backgroundColor: "rgb(240,240,240)", width: "100%" }}>
+      <AppBar position="sticky" elevation={0} style={{ backgroundColor: "rgb(240,240,240)", width: "100%", top: 0}}>
             <Toolbar>
               <img src="/Rival_logo_2x.png" style={{ height: '50px', margin: "5px"}} />
             </Toolbar>
