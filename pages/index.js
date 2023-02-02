@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
+import Message from "../components/Message";
 
 
 export default function Home() {
@@ -9,11 +10,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollableContainerRef = useRef(null);
   //time
-  const [time, setTime] = useState(new Date().toLocaleString());
+  let [timestamp, setTimestamp] = useState(new Date().toLocaleString());
 
   useEffect(() => {
+    if (!timestamp) {
+      setTimestamp(new Date().toLocaleString());
+    }
     scrollableContainerRef.current.scrollTop = scrollableContainerRef.current.scrollHeight;
-  }, [hybrids]);
+  }, [hybrids, timestamp]);
 
   async function onSubmit(event, animal = animalInput) {
     event.preventDefault();
@@ -58,14 +62,14 @@ export default function Home() {
         <img src="/Rival_logo_2x.png" className={styles.icon} />
       </div>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
-        <div className={styles.messageContainer}>
-          <div className={styles.animalRight}>
-            I noticed you had a recent experience with one of our products or events 🤔
-            <div className={styles.subtext}>
-              N:OW - RivalAI
-            </div>
-          </div>
-        </div>
+
+    <div className={styles.messageContainer}>
+      <Message
+        author="RivalAI"
+        text="I noticed you had a recent experience with one of our products or events 🤔"
+        timestamp={timestamp}>
+      </Message>
+    </div>
 
         {hybrids.map((hybrid, index) => (
           <div key={index} className={styles.messageContainer}>
@@ -91,11 +95,12 @@ export default function Home() {
             onChange={e => setAnimalInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
           />
+                  </form>
           <button type="submit" className={styles.submit} disabled={isLoading}>
             {isLoading ? "Generating..." : "Generate"}
           </button>
 
-        </form>
+
       </div>
       <div className={styles.footer}>
         <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>

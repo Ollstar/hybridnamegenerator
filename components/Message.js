@@ -1,17 +1,14 @@
-import React from "react";
-import styles from "./Message.module.css";
+import React from 'react';
+import styles from './Message.module.css';
 
-const Message = ({ text, author, timestamp }) => {
-  return (
-    <div className={styles.messageContainer}>
-      <div className={author === "User" ? styles.animalLeft : styles.animalRight}>
-        {text}
-      </div>
+const Message = ({ author, text, timestamp }) => (
+  <div className={author === 'User' ? styles.animalLeft : styles.animalRight}>
+    {text}
       <div className={styles.subtext}>
-        {timestamp} - {author}
+      {timestamp ? 'N:0W' : timestamp} - {author}
       </div>
-    </div>
-  );
-};
+
+  </div>
+);
 
 export default Message;
