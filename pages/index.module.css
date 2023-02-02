@@ -6,6 +6,7 @@
 }
 
 .header {
+  height: 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,6 +26,7 @@
 
 .icon {
   margin-right: 10px;
+  width: 50px;
 }
 
 .scrollableContainer {
@@ -95,7 +97,7 @@
 
 .animalLeft {
   text-align: left;
-  background-color: rgb(117, 108, 108);
+  background-color: rgb(56, 116, 203);
   border-radius: 10px;
   padding: 10px;
   float: left;

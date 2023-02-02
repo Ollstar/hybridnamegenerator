@@ -2,8 +2,21 @@ import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 import Message from "../components/Message";
-
-
+import {
+  Box,
+  Grid,
+  TextField,
+  Button,
+  AppBar,
+  Toolbar,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Link,
+  Container
+} from "@mui/material";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
@@ -54,13 +67,15 @@ export default function Home() {
   return (
     <div className={styles.container} style={{ height: "100vh" }}>
       <Head>
-        <title>Speak to Rival and leave Reviews</title>
+        <title>Speak to RivalAI and leave a Review</title>
         <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
-      <div className={styles.header}>
-        <img src="/Rival_logo_2x.png" className={styles.icon} />
-      </div>
+      <AppBar position="static">
+            <Toolbar>
+              <img src="/Rival_logo_2x.png" style={{ height: '50px' }} />
+            </Toolbar>
+          </AppBar>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
 
     <div className={styles.messageContainer}>
