@@ -18,6 +18,7 @@ import {
   Container,
   rgbToHex
 } from "@mui/material";
+import { width } from "@mui/system";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [hybrids, setHybrids] = useState([]);
@@ -72,7 +73,7 @@ export default function Home() {
         <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
-      <AppBar position="static" style={{ backgroundColor: "rgb(240,240,240)" }}>
+      <AppBar position="static" style={{ backgroundColor: "rgb(240,240,240)", width: "100%" }}>
             <Toolbar>
               <img src="/Rival_logo_2x.png" style={{ height: '50px', margin: "5px"}} />
             </Toolbar>
