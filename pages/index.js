@@ -8,6 +8,8 @@ export default function Home() {
   const [hybrids, setHybrids] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollableContainerRef = useRef(null);
+  //time
+  const [time, setTime] = useState(new Date().toLocaleString());
 
   useEffect(() => {
     scrollableContainerRef.current.scrollTop = scrollableContainerRef.current.scrollHeight;
@@ -45,7 +47,6 @@ export default function Home() {
   }
 
 
-
   return (
     <div className={styles.container} style={{ height: "100vh" }}>
       <Head>
@@ -57,23 +58,31 @@ export default function Home() {
         <img src="/Rivallogo.png" className={styles.icon} />
       </div>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
+        <div className={styles.messageContainer}>
+          <div className={styles.animalRight}>
+            I noticed you had a recent experience with one of our products or events 🤔
+            <div className={styles.subtext}>
+              N:OW - RivalAI
+            </div>
+          </div>
+        </div>
 
         {hybrids.map((hybrid, index) => (
           <div key={index} className={styles.messageContainer}>
-            <div >
+            <div>
               <div className={hybrid.author === "User" ? styles.animalLeft : styles.animalRight}>
                 {hybrid.text}
                 <div className={styles.subtext}>
                   {hybrid.timestamp} - {hybrid.author}
                 </div>
               </div>
-
             </div>
           </div>
         ))}
 
         <div style={{ clear: "both" }}></div>
       </div>
+
       <form className={styles.form} onSubmit={onSubmit}>
         <input type="text"
           className={styles.input}
