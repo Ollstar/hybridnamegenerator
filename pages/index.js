@@ -112,14 +112,14 @@ export default function Home() {
           />
                   </form>
           <button type="submit" className={styles.submit} disabled={isLoading} onClick={(e) => onSubmit(e)}>
-            {isLoading ? "Generating..." : "Generate"}
+            {isLoading ? "Generating..." : "Submit"}
           </button>
 
 
       </div>
-      <div className={styles.footer}>
+      <footer className={styles.footer}>
         <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
-      </div>
+      </footer>
     </div >
   );
 }

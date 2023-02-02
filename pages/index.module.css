@@ -57,8 +57,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
   font-family: "lato", sans-serif;
   }
   .input, .submit {
@@ -138,8 +136,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
   font-family: "lato", sans-serif;
 
 }
