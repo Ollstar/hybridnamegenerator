@@ -73,7 +73,7 @@ export default function Home() {
         <link rel="icon" href="/Rival_logo_2x.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
-      <AppBar position="static" style={{ backgroundColor: "rgb(240,240,240)", width: "100%" }}>
+      <AppBar position="sticky" elevation={0} style={{ backgroundColor: "rgb(240,240,240)", width: "100%" }}>
             <Toolbar>
               <img src="/Rival_logo_2x.png" style={{ height: '50px', margin: "5px"}} />
             </Toolbar>
@@ -103,7 +103,9 @@ export default function Home() {
 
         <div style={{ clear: "both" }}></div>
       </div>
-      <div className={styles.inputContainer}>
+
+<AppBar position="sticky" elevation={0} sx={{ backgroundColor: "rgb(240,240,240)", width: "100%" ,top: 'auto', bottom: 0 }}>
+      <div position="fixed" className={styles.inputContainer}>
         <form className={styles.form} onSubmit={onSubmit}>
           <input type="text"
             className={styles.input}
@@ -122,6 +124,8 @@ export default function Home() {
       <footer className={styles.footer}>
         <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
       </footer>
+</AppBar>
+
     </div >
   );
 }
