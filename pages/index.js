@@ -96,7 +96,7 @@ export default function Home() {
             onKeyDown={(e) => e.key === 'Enter' ? onSubmit(e) : null}
           />
                   </form>
-          <button type="submit" className={styles.submit} disabled={isLoading}>
+          <button type="submit" className={styles.submit} disabled={isLoading} onClick={(e) => onSubmit(e)}>
             {isLoading ? "Generating..." : "Generate"}
           </button>
 
