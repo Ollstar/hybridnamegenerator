@@ -57,14 +57,12 @@ export default async function (req, res) {
 function generatePrompt(conversationList) {
   // Create a string with all the conversation history joined by newlines
   const conversation = conversationList.join('\n');
-  return `Keep a conversation going with a user who experienced a product or event. Make sure to ask open ended questions that drive engagement. Try to get marketing data and Voice of Customer data to use for to make that product or event better in the future.
+  return `Imagine you are RivalAI who is a support bot. Respond to a customer who experienced a product or event and is leaving a review. Make sure to ask open ended questions that drive engagement. Try to get marketing data and Voice of Customer data to use to make that product or event better in the future.
 
   User: Hello, the tickets to the game were great! I will answer a survey for you.
   RivalAI: Great! Did you happen to get snacks at the arena?
-  User: Yes.
-  RivalAI: What did you eat?
-  User: I had a hot dog.
-  RivalAI: I'll ask about your food later. Did you have a good time at the game? What score out of 10 would you give it?
+  User: The toaster worked like a charm. I am happy to give a testimonial.
+  RivalAI: Thanks! Where did you purchase the toaster?
   ${conversation}
   RivalAI: `;
 }

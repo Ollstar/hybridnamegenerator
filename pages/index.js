@@ -46,12 +46,11 @@ export default function Home() {
     <div className={styles.container} style={{ height: "100vh" }}>
       <Head>
         <title>Hybrid Superhero Maker</title>
-        <link rel="icon" href="/bot1.png" />
+        <link rel="icon" href="/Rivallogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
       <div className={styles.header}>
-        <img src="/bot1.png" className={styles.icon} />
-        <h3>RivalAI</h3>
+        <img src="/Rivallogo.png" className={styles.icon} />
       </div>
       <div className={styles.scrollableContainer} style={{ width: "100%", height: "80vh" }} ref={scrollableContainerRef}>
 
@@ -84,6 +83,9 @@ export default function Home() {
         </button>
 
       </form>
+      <div className={styles.footer}> 
+        <p>Powered by <a href="https://www.rivaltech.com/">Rival</a></p>
+    </div>
     </div>
   );
 }
