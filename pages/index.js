@@ -9,6 +9,7 @@ import {
   Button,
   AppBar,
   Toolbar,
+  NoSsr,
   Paper,
   List,
   ListItem,
@@ -83,14 +84,14 @@ export default function Home() {
     <Message
         author="RivalAI"
         text="Hey... 👋"
-        timestamp={timestamp}>
+        timestamp={<NoSsr>{timestamp}</NoSsr> }>
       </Message>
     </div>
     <div className={styles.messageContainer}>
       <Message
         author="RivalAI"
         text="I noticed you had a recent experience with one of our products or events 🤔"
-        timestamp={timestamp}>
+        timestamp={<NoSsr>{timestamp}</NoSsr> }>
       </Message>
     </div>
 
@@ -100,7 +101,7 @@ export default function Home() {
             <div>
               <div className={hybrid.author === "User" ? styles.animalLeft : styles.animalRight}>
                 {hybrid.text}
-                <div className={styles.subtext}>
+                <div className={hybrid.author === "User" ? styles.subtextLeft : styles.subtext}>
                   {hybrid.timestamp} - {hybrid.author}
                 </div>
               </div>
@@ -123,7 +124,7 @@ export default function Home() {
           />
                   </form>
           <button type="submit" className={styles.submit} disabled={isLoading} onClick={(e) => onSubmit(e)}>
-            {isLoading ? "Generating..." : "Submit"}
+            {isLoading ? "Generating..." : "SUBMIT"}
           </button>
 
 
